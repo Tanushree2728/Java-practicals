@@ -1,0 +1,67 @@
+Problem Statement:Design and implement a java program that manages students academic records using oop principles.
+import java.util.Scanner;
+class Student
+{
+    String name;
+    int RollNo;
+    int[] Marks;
+
+    Student(String name,int RollNo,int[] Marks)
+    {
+        this.name=name;
+        this.RollNo=RollNo;
+        this.Marks=Marks;
+    }
+    void formatName()
+    {
+        name=name.trim().toUpperCase();
+    }
+    int getTotal()
+    {
+        int total=0;
+        for(int Mark :Marks)
+        {
+            total += Mark;
+        }
+        return total;
+    }
+    double getAverage()
+    {
+        return(double)getTotal()/Marks.length;
+    }
+    void display()
+    {
+        System.out.println("\nStudents Details");
+        System.out.println("Name:"+name);
+        System.out.println("Rollno"+RollNo);
+        System.out.println("Total Marks"+getTotal());
+        System.out.println("Average marks"+getAverage());
+    }
+}
+public class StudentRecord
+{
+    public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter Student name:");
+        String name=sc.nextLine();
+
+        System.out.println("Enter rollNo:");
+        int RollNo=sc.nextInt();
+
+        System.out.println("Enter number of Subjects:");
+        int n=sc.nextInt();
+
+        int[] Marks=new int[n];
+
+        System.out.println("Enter marks:");
+        for(int i=0;i<n;i++)
+        {
+            Marks[i]=sc.nextInt();
+
+        }
+        Student s=new Student(name,RollNo,Marks);
+        s.formatName();
+        s.display();
+    }
+}
